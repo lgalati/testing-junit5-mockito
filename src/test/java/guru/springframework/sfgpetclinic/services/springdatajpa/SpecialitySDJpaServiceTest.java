@@ -11,7 +11,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
@@ -25,24 +24,25 @@ class SpecialitySDJpaServiceTest {
 
     @Test
     void testDeleteByObject() {
-        Speciality specialty = new Speciality();
+        Speciality speciality = new Speciality();
 
-        service.delete(specialty);
+        service.delete(speciality);
 
         verify(specialtyRepository).delete(any(Speciality.class));
     }
 
     @Test
     void findByIdTest() {
-        Speciality specialty = new Speciality();
+        Speciality speciality = new Speciality();
 
-        when(specialtyRepository.findById(1L)).thenReturn(Optional.of(specialty));
+        when(specialtyRepository.findById(1L)).thenReturn(Optional.of(speciality));
 
         Speciality foundSpecialty = service.findById(1L);
 
         assertThat(foundSpecialty).isNotNull();
 
         verify(specialtyRepository).findById(anyLong());
+
     }
 
     @Test
@@ -70,7 +70,7 @@ class SpecialitySDJpaServiceTest {
     }
 
     @Test
-    void deleteByIdAtNever() {
+    void deleteByIdNever() {
         service.deleteById(1l);
         service.deleteById(1l);
 

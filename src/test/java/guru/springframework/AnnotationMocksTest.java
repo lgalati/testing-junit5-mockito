@@ -8,6 +8,7 @@ import org.mockito.MockitoAnnotations;
 import java.util.Map;
 
 public class AnnotationMocksTest {
+
     @Mock
     Map<String, Object> mapMock;
 
